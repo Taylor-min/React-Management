@@ -34,9 +34,9 @@ class App extends Component {
 
   componentDidMount() {
     this.timer = setInterval(this.progress,800);
-    // this.callApi()
-    //   .then(res => this.setState({ customers: res }))
-    //   .catch(err => console.log(err));
+    this.callApi()
+      .then(res => this.setState({ customers: res }))
+      .catch(err => console.log(err));
   }
 
   callApi = async () => {
@@ -66,10 +66,10 @@ class App extends Component {
             </TableRow>
           </TableHead>
           <TableBody>{this.state.customers ? this.state.customers.map(c => {
-            return (<Customer key={c.id} id={c.id} image={c.image} name={c.name} birth={c.birth} gender={c.gender} job={c.job} />);
+            return (<Customer key={c.id} id={c.id} image={c.image} name={c.name} birth={c.birthday} gender={c.gender} job={c.job} />);
           }) : 
           <TableRow>
-            <TableCell colspan="6" align="center">
+            <TableCell colSpan="6" align="center">
               <CircularProgress className={classes.progress} variant = "determinate" value = {this.state.completed}/>
             </TableCell>
           </TableRow>
